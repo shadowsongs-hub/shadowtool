@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "shadowtool"
+version = "0.1.0"
+description = ""
+authors = ["Shadowsong27 <syk950527@gmail.com>"]
+
+[tool.poetry.dependencies]
+sqlalchemy = "1.3"
+
+[tool.poetry.dev-dependencies]
+sqlalchemy = "1.3"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

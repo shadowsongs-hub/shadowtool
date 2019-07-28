@@ -1,0 +1,8 @@
+README.rst
+setup.py
+shadowtool/__init__.py
+shadowtool.egg-info/PKG-INFO
+shadowtool.egg-info/SOURCES.txt
+shadowtool.egg-info/dependency_links.txt
+shadowtool.egg-info/requires.txt
+shadowtool.egg-info/top_level.txt

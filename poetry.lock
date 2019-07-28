@@ -1,0 +1,14 @@
+[[package]]
+category = "main"
+description = "Database Abstraction Library"
+name = "sqlalchemy"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "1.3.0"
+
+[metadata]
+content-hash = "77ddf57cb136b453369e665c53b211f6d5435192299ba4a8d5cc9d5c5d57c0bb"
+python-versions = "*"
+
+[metadata.hashes]
+sqlalchemy = ["11ead7047ff3f394ed0d4b62aded6c5d970a9b718e1dc6add9f5e79442cc5b14"]
