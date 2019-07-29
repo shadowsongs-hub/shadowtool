@@ -5,4 +5,4 @@
 shadowtool.egg-info
 
 # Cache
-shadowtool/__pycache__/
+__pycache__/

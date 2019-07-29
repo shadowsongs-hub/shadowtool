@@ -18,8 +18,8 @@ setup(
     keywords='',
     packages=find_packages(exclude=['test*']),
     install_requires=[
-        'configobj==5.0.6',
-
+        'toml==0.10.0',
+        'attrs==19.1.0'
     ],
     package_data={},
     data_files=[],

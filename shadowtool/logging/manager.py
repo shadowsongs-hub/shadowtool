@@ -1,6 +1,6 @@
 import logging
 
-from shadowtool.exceptions import InvalidLoggingLevel
+from shadowtool.exceptions import InvalidLoggingLevelError
 
 
 class LoggingManager:
@@ -15,7 +15,7 @@ class LoggingManager:
         self.global_logging_level = global_logging_level
 
         if not self._validate_logging_level(self.global_logging_level):
-            raise InvalidLoggingLevel(f"Logging level is invalid. Input is: {self.global_logging_level}")
+            raise InvalidLoggingLevelError(f"Logging level is invalid. Input is: {self.global_logging_level}")
 
     @staticmethod
     def _validate_logging_level(logging_level: str) -> bool:
