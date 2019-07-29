@@ -1,5 +1,7 @@
 import logging
 
+from shadowtool.exceptions import InvalidLoggingLevel
+
 
 class LoggingManager:
 
@@ -9,35 +11,36 @@ class LoggingManager:
 
     """
 
-    def __init__(self, logging_level: str = 'INFO'):
-        self.logging_level = logging_level
-        self._logger = None
+    def __init__(self, global_logging_level: str = 'INFO'):
+        self.global_logging_level = global_logging_level
 
-        # initialisation
-        self.logger.setLevel(self.logging_level)
-        self._add_console_handler()
-
-        self.logger.warning("Logger initialised.")
-
-    def _validate_logging_level(self):
-        return self.logging_level in ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']
+        if not self._validate_logging_level(self.global_logging_level):
+            raise InvalidLoggingLevel(f"Logging level is invalid. Input is: {self.global_logging_level}")
 
     @staticmethod
-    def get_standard_formatter():
-        return logging.Formatter("%(asctime)s : %(levelname)s : %(message)s")
+    def _validate_logging_level(logging_level: str) -> bool:
+        return logging_level in ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']
 
-    @property
-    def logger(self):
-        if self._logger is None:
-            self._logger = logging.getLogger(__name__)
+    @staticmethod
+    def get_standard_formatter() -> logging.Formatter:
+        return logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
-        return self._logger
+    def get_logger(self, logging_level: str = None, logger_name: str = __name__, console: bool=True) -> logging.Logger:
+        if logging_level is None:
+            logging_level = self.global_logging_level
 
-    def _add_console_handler(self):
+        logger = logging.getLogger(logger_name)
+        logger.setLevel(logging_level)
+
+        if console:
+            self._add_console_handler(logger)
+
+        logger.warning(f"Logger **{logger_name}** initialised.")
+
+        return logger
+
+    def _add_console_handler(self, logger: logging.Logger) -> None:
         console = logging.StreamHandler()
-        console.setLevel(self.logging_level)
         console.setFormatter(self.get_standard_formatter())
-
-        self.logger.addHandler(console)
-
+        logger.addHandler(console)
 

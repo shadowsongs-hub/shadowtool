@@ -1,0 +1,2 @@
+class InvalidLoggingLevel(Exception):
+    pass
