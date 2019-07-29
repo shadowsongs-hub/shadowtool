@@ -3,3 +3,6 @@
 
 # Build
 shadowtool.egg-info
+
+# Cache
+shadowtool/__pycache__/
