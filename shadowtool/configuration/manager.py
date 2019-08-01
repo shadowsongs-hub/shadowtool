@@ -1,7 +1,11 @@
+from typing import Dict
+
+import toml
+
 from shadowtool.exceptions import InvalidConfigFormatError
 from shadowtool.configuration.config_models import *
+from shadowtool.constants import ConfigKey
 from shadowtool import global_logger
-import toml
 
 
 class ConfigManager:
@@ -19,8 +23,8 @@ class ConfigManager:
 
         self.db_config = self._construct_db_config()
 
-    def _construct_db_config(self):
-        if 'database' not in self.parsed_object:
+    def _construct_db_config(self) -> Dict[DatabaseConfig]:
+        if ConfigKey.DATABASE.value not in self.parsed_object:
             raise InvalidConfigFormatError
 
         database_object = self.parsed_object['database']

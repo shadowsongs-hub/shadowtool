@@ -1,3 +1,5 @@
+from typing import Dict
+
 class DatabaseManager:
 
     """
@@ -8,7 +10,7 @@ class DatabaseManager:
 
     """
 
-    def __init__(self, config_manager):
+    def __init__(self, config_objects: Dict[DatabaseConfig]):
         pass
 
     def init_hooks(self):

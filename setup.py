@@ -19,12 +19,13 @@ setup(
     packages=find_packages(exclude=['test*']),
     install_requires=[
         'toml==0.10.0',
-        'attrs==19.1.0'
+        'attrs==19.1.0',
+        'click==7.0'
     ],
     package_data={},
     data_files=[],
-    # entry_points="""
-    #     [console_scripts]
-    #     shadowtool=bin.manage:cli
-    # """,
+    entry_points="""
+        [console_scripts]
+        shadowtool=bin.manage_dev:cli
+    """,
 )

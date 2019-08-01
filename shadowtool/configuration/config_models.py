@@ -7,7 +7,7 @@ class BaseConfig:
 
 
 @attr.s(auto_attribs=True)
-class DatabaseConfig:
+class DatabaseConfig(BaseConfig):
     server: str = attr.ib()
     port: int = attr.ib()
     user: str = attr.ib()
