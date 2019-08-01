@@ -20,3 +20,20 @@ A personal Python development library.
 
 - manages logging setup
 
+
+# Quick Start
+
+Create virtual environment
+
+```
+pyenv virtualenv 3.6.7 shadowtool
+
+pip install -e .
+```
+
+Test commands:
+
+```
+shadowtool --help
+```
+

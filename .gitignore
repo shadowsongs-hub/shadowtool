@@ -6,3 +6,6 @@ shadowtool.egg-info
 
 # Cache
 __pycache__/
+
+# config
+test-config.toml

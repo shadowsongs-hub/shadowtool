@@ -21,7 +21,8 @@ setup(
         'toml==0.10.0',
         'attrs==19.1.0',
         'click==7.0',
-        'psycopg2-binary==2.8.3'
+        'psycopg2-binary==2.8.3',
+        'sqlalchemy==1.3.0'
     ],
     package_data={},
     data_files=[],

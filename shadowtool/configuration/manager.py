@@ -35,7 +35,7 @@ class ConfigManager:
         if ConfigKey.DATABASE.value not in self.parsed_object:
             raise InvalidConfigFormatError
 
-        database_object = self.parsed_object['database']
+        database_object = self.parsed_object[ConfigKey.DATABASE.value]
 
         db_config = {}
 
