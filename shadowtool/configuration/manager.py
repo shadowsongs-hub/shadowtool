@@ -21,9 +21,17 @@ class ConfigManager:
         with open(config_path, 'r') as file:
             self.parsed_object = toml.loads(file.read())
 
-        self.db_config = self._construct_db_config()
+        self._db_config = {}
 
-    def _construct_db_config(self) -> Dict[DatabaseConfig]:
+    @property
+    def db_config(self) -> Dict[str, "DatabaseConfig"]:
+
+        if not self._db_config:
+            self._db_config = self._construct_db_config()
+
+        return self._db_config
+
+    def _construct_db_config(self) -> Dict[str, "DatabaseConfig"]:
         if ConfigKey.DATABASE.value not in self.parsed_object:
             raise InvalidConfigFormatError
 
@@ -38,7 +46,3 @@ class ConfigManager:
         global_logger.warning(f"{len(db_config)} db credentials parsed. ")
 
         return db_config
-
-
-if __name__ == '__main__':
-    cm = ConfigManager("../../test-config.toml")

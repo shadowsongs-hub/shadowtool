@@ -1,5 +1,10 @@
 from typing import Dict
 
+import sqlalchemy as sqla
+
+from shadowtool.configuration.config_models import *
+
+
 class DatabaseManager:
 
     """
@@ -10,11 +15,23 @@ class DatabaseManager:
 
     """
 
-    def __init__(self, config_objects: Dict[DatabaseConfig]):
-        pass
+    def __init__(self, db_configs: Dict[str, "DatabaseConfig"], echo: bool=False):
+        self.db_configs = db_configs
+        self.echo = echo  # prints statements
 
-    def init_hooks(self):
+        self._engines = {}
+
+    @property
+    def engines(self):
         """
         initialise a pool of hooks from db configs list
         """
-        pass
+        if not self._engines:
+            for connection_name, single_dbc in self.db_configs.items():
+                self._engines[connection_name] = sqla.create_engine(
+                    single_dbc.sqlalchemy_uri,
+                    pool_size=20,
+                    echo=self.echo
+                )
+
+        return self._engines
