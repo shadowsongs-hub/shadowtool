@@ -4,3 +4,11 @@ class InvalidLoggingLevelError(Exception):
 
 class InvalidConfigFormatError(Exception):
     pass
+
+
+class UnknownLoadedQueryNameError(Exception):
+    pass
+
+
+class EmptyQueryError(Exception):
+    pass

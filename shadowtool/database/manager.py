@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Any
 
 from shadowtool.configuration.models import *
 from shadowtool.database import db_logger
@@ -36,6 +36,5 @@ class DatabaseManager:
         db_logger.warning(f"Initialising database hooks, detected {len(self._hooks)}")
 
         return self._hooks
-
 
 

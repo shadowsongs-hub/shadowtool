@@ -13,7 +13,16 @@ def cli():
 def test_config():
     cm = ConfigManager('test-config.toml')
     dm = DatabaseManager(cm.db_config)
-    print(dm.hooks['real_dev'].conn)
+    hook = dm.hooks['real_dev']
+    result = hook.execute_query(
+        query="""
+        SELECT
+            *
+        FROM public.test
+        """
+    )
+
+    print(result)
 
 
 if __name__ == '__main__':
