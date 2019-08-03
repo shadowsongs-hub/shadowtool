@@ -62,6 +62,21 @@ class DatabaseHook:
             query_name: str = None,
             parameters: Dict[str, Any] = None,
     ):
+        """
+        Execute a query or a loaded query, parameters are acceptable
+        in dictionary format.
+
+        The output would contain a list of dictionary, representing
+        the rows.
+
+        Note the loaded query would override the raw query strings
+        passed to the method.
+
+        :param query: str, raw query
+        :param query_name: str, loaded query name
+        :param parameters: dict, SQL parameters
+        :return: a list of rows in dictionary format
+        """
         if query_name is not None:
             try:
                 query = self.loaded_queries[query_name]
