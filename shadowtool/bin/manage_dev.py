@@ -11,10 +11,9 @@ def cli():
 
 @cli.command()
 def test_config():
-    print("Hello")
     cm = ConfigManager('test-config.toml')
     dm = DatabaseManager(cm.db_config)
-    print(dm.engines)
+    print(dm.hooks['real_dev'].conn)
 
 
 if __name__ == '__main__':

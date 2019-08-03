@@ -3,7 +3,7 @@ from typing import Dict
 import toml
 
 from shadowtool.exceptions import InvalidConfigFormatError
-from shadowtool.configuration.config_models import *
+from shadowtool.configuration.models import *
 from shadowtool.constants import ConfigKey
 from shadowtool import global_logger
 

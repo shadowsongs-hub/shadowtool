@@ -1,8 +1,8 @@
 from typing import Dict
 
-import sqlalchemy as sqla
-
-from shadowtool.configuration.config_models import *
+from shadowtool.configuration.models import *
+from shadowtool.database import db_logger
+from shadowtool.database.models import DatabaseHook
 
 
 class DatabaseManager:
@@ -19,20 +19,23 @@ class DatabaseManager:
         self.db_configs = db_configs
         self.echo = echo  # prints statements
 
-        self._engines = {}
+        self._hooks = {}
 
     @property
-    def engines(self):
+    def hooks(self):
         """
         initialise a pool of hooks from db configs list
         """
-        if not self._engines:
-            for connection_name, single_dbc in self.db_configs.items():
-                self._engines[connection_name] = sqla.create_engine(
-                    single_dbc.sqlalchemy_uri,
-                    pool_size=20,
-                    echo=self.echo
-                )
+        if not self._hooks:
 
-        return self._engines
+            self._hooks = {name: DatabaseHook(
+                db_config=single_dbc,
+                connection_name=name
+            ) for name, single_dbc in self.db_configs.items()}
+
+        db_logger.warning(f"Initialising database hooks, detected {len(self._hooks)}")
+
+        return self._hooks
+
+
 
