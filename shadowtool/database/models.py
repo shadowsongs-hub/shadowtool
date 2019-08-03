@@ -13,15 +13,14 @@ class DatabaseHook:
             self,
             db_config: "DatabaseConfig",
             connection_name: str,
-            loaded_queries: Dict[str, str] = None,
             echo: bool = False
     ):
         self.connection_name = connection_name
         self.db_config = db_config
         self.echo = echo
-        self.loaded_queries = loaded_queries
 
         # cache declare
+        self.loaded_queries = None
         self._engine = None
 
     @property
@@ -42,6 +41,9 @@ class DatabaseHook:
 
         db_logger.warning('connection established.')
         return connection
+
+    def add_loaded_queries(self, loaded_queries: Dict[str, str]):
+        self.loaded_queries = loaded_queries
 
     def init_schema(self, sqla_metadata) -> None:
         """

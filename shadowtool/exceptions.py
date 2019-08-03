@@ -12,3 +12,8 @@ class UnknownLoadedQueryNameError(Exception):
 
 class EmptyQueryError(Exception):
     pass
+
+
+class DuplicateQueryNameError(Exception):
+    pass
+
