@@ -9,3 +9,5 @@ __pycache__/
 
 # config
 test-config.toml
+
+poetry.lock
