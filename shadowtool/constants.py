@@ -1,6 +1,4 @@
 from enum import Enum
 
+PROJECT_NAME = "shadowtool"
 
-class ConfigKey(Enum):
-    CORE = 'core'
-    DATABASE = 'database'
