@@ -3,8 +3,7 @@ import os
 from typing import Any
 from shadowtool.main.vendors.microsoft_teams import MicroSoftTeamsWebHook
 from botocore.exceptions import ParamValidationError
-from shadowtool.constants import Color, StatusImage
-from .aws import get_secret
+from shadowtool.main.vendors.aws import SecretManagerHook
 
 
 # these are randomly chosen images, can be configured
@@ -21,6 +20,9 @@ class CustomisedLogger(logging.Logger):
 
     def __init__(self, name: str, **kwargs):
         super().__init__(name, **kwargs)
+
+        smh = SecretManagerHook()
+
         try:
             self.hook = MicroSoftTeamsWebHook(
                 get_secret(os.getenv("TEAMS_CHANNEL_HOOK"))
@@ -94,7 +96,7 @@ class LoggingMixin:
     @property
     def log(self):
         """
-            create a logger mixin and it works perfectly
+        access the logger
         """
         try:
             return self.__class__._log

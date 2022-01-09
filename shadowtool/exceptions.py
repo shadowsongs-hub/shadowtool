@@ -17,3 +17,18 @@ class EmptyQueryError(Exception):
 class DuplicateQueryNameError(Exception):
     pass
 
+
+class RetryDBConnectionFailure(Exception):
+    pass
+
+
+class RequestToObjectException(Exception):
+    pass
+
+
+class ConnectionIDNotFound(Exception):
+    pass
+
+
+class BashCommandFailure(Exception):
+    pass
