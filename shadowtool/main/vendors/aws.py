@@ -207,7 +207,7 @@ class S3Hook(BaseAWSHook):
         Get the metadata of a specified S3 object as a dictionary
         """
         obj = self.client.Object(self.bucket_name, s3_key)
-        obj.load()
+        obj.run()
         return obj.metadata
 
 
