@@ -12,3 +12,11 @@ class BaseType(str, enum.Enum):
     @classmethod
     def from_args(cls, raw_value: str):
         return cls[raw_value.upper()]
+
+
+class DataLayer(BaseType):
+
+    DUMP = "DUMP"
+    RAW = "RAW"
+    CLEAN = "CLEAN"
+    APP = "APP"

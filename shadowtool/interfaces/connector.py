@@ -60,7 +60,7 @@ class BaseConnector(mixins.TableNameAliasMixin, BaseDataLakehouseOperationManage
     db_name: str = None
     tbl_name: str = None
     source_name: str = None
-    data_format: Optional[str] = "PARQUET"
+    data_format: Optional[str] = "PARQUET"  # TODO: used only when needed to export
     team: Optional[str] = "default"
     etl_mode: Optional[str] = "INCREMENTAL"
 

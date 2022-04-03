@@ -1,4 +1,4 @@
-from shadowtool.interfaces.base_connector import ThirdPartyConnector
+from shadowtool.interfaces.connector import ThirdPartyConnector
 
 
 class FutuConnector(ThirdPartyConnector):

@@ -7,7 +7,7 @@ import json
 from dataclasses import dataclass
 from botocore.exceptions import ClientError
 
-from shadowtool.interfaces.base_hook import BaseHook
+from shadowtool.interfaces.hook import BaseHook
 from shadowtool.main.general.logging_utils import LoggingMixin
 from shadowtool.main.general.shell_utils import run_commands
 
